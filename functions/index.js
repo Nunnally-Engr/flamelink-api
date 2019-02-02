@@ -22,6 +22,8 @@ exports.selectMyblog = functions.https.onRequest(ex1)
 // ========================================================================================
 exports.onWriteMyblog = functions.database.ref('/flamelink/environments/production/content/myblog')
 .onWrite(async (snap, context) => {
+  console.log('=== 変更内容[snap] ===')
+  console.log(snap)
   // Netlify ビルド実行
   await runBuildByNetlify()
   return true
